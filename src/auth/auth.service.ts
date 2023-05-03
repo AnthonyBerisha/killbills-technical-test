@@ -1,18 +1,31 @@
+import { isEmail } from "~/utils/email";
+import { type AuthPayload } from "~~/types/AuthPayload";
+
+// TODO - Write auth token creation methods
 export class AuthService {
-    // TODO - Write auth token creation methods
-    verify() {
-        // Check if email is an email
+  // Check if email is an email
+  verify(authPayload: AuthPayload): boolean {
+    return isEmail(authPayload.email);
+  }
+
+  register(authPayload: AuthPayload): void {
+    if (this.userExists(authPayload.email)) {
+        this.getToken(authPayload.email);
     }
 
-    clientExists() {
-        // Check if email exists
-    }
 
-    private getToken() {
-        // get the token from the passed user email
-    }
+    
+  }
 
-    private generate() {
-        // generate a token
-    }
+  userExists(email: string): boolean {
+    // Check if email exists
+  }
+
+  private getToken() {
+    // get the token from the passed user email
+  }
+
+  private generate() {
+    // generate a token
+  }
 }

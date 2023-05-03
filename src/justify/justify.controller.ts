@@ -1,4 +1,4 @@
-import { Request, Response, Router } from "express";
+import { type Request, type Response, Router } from "express";
 import { JustifyService } from "./justify.service";
 
 const JustifyController = Router();
@@ -13,9 +13,9 @@ const service = new JustifyService();
     - Call JustifyService's methods
     - Return result
 */
-JustifyController.post('/', (req: Request, res: Response) => {
-    res.set('Content-Type', 'text/plain');
-    return res.send(service.justify());
-})
+JustifyController.post("/", (req: Request, res: Response) => {
+  res.set("Content-Type", "text/plain");
+  return res.send(service.justify());
+});
 
 export { JustifyController };

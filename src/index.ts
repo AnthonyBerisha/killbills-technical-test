@@ -1,14 +1,19 @@
-import express, { Request, Response } from "express";
-import { config } from "~/config";
-import {JustifyController} from "~/justify/justify.controller";
+import * as dotenv from "dotenv";
+import express, { type Request, type Response } from "express";
+import { JustifyController } from "~/justify/justify.controller";
+import { AuthController } from "./auth/auth.controller";
 
 const api = express();
+dotenv.config();
 
-api.get('/', (req: Request, res: Response) => {
-    res.send('hello world');
-})
+api.use(express.json());
+api.use("/api", JustifyController);
+api.use("/api", AuthController);
 
-api.use('/api/justify', JustifyController);
+api.get("/", (req: Request, res: Response) => {
+  res.send("hello world");
+});
 
-
-api.listen(process.env.PORT || 5000, () => console.log(`Running on port: ${config.API_PORT}`))
+api.listen(process.env.PORT, () => {
+  console.log(`Running on port: ${process.env.PORT}`);
+});
