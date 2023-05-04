@@ -1,6 +1,6 @@
 const dotenv = require("dotenv").config();
 import express, { type Request, type Response } from "express";
-import { JustifyController } from "~/justify/justify.controller";
+import { JustifyController } from "./justify/justify.controller";
 import { AuthController } from "./auth/auth.controller";
 import dbInit from "./db/init";
 const api = express();

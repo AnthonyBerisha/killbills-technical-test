@@ -1,7 +1,7 @@
-import { create } from "~/db/dal/token";
-import Token, { type TokenOutput } from "~/db/models/Token";
-import { isEmail } from "~/utils/email";
-import { type AuthPayload } from "~~/types/AuthPayload";
+import { create } from "../db/dal/token";
+import Token, { type TokenOutput } from "../db/models/Token";
+import { isEmail } from "../utils/email";
+import { type AuthPayload } from "../../types/AuthPayload";
 const bcrypt = require("bcrypt");
 export class AuthService {
   // Check if email is an email
