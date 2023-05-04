@@ -12,13 +12,11 @@ const authService = new AuthService();
 AuthController.post("/token", async (req: Request, res: Response) => {
   if (!!req.body.email && authService.verify(req.body)) {
     const token = await authService.register(req.body);
-    // return res.send(token);
-    console.log(req.body);
-    res.send('caca');
 
-    return;
+    res.json(token);
+  } else {
+    res.status(404).send("Sorry, cant find that");
   }
-  return res.status(404).send('Sorry, cant find that');
 });
 
 export { AuthController };
