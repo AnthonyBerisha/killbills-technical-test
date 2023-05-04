@@ -7,7 +7,7 @@ const dbDriver = process.env.DB_DRIVER as Dialect;
 const dbPassword = process.env.DB_PASSWORD;
 const sequelizeConnection = new Sequelize(dbName, dbUser, dbPassword, {
   host: dbHost,
-  dialect: dbDriver,
+  dialect: 'sqlite',
   storage: "./database.sqlite",
 });
 
