@@ -1,6 +1,6 @@
 import Call, { type CallInput } from "../models/Call";
 import moment from "moment";
-import Op from "sequelize";
+import { Op } from "sequelize";
 
 export const create = async (payload: CallInput): Promise<Call> => {
   const call = await Call.create(payload);

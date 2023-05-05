@@ -6,7 +6,7 @@ import { promisify } from "util";
 const bcrypt = require("bcrypt");
 export class AuthService {
   // Check if email is an email
-  verify(authPayload: AuthPayload): boolean {
+  public verify(authPayload: AuthPayload): boolean {
     return isEmail(authPayload.email);
   }
 
@@ -18,11 +18,11 @@ export class AuthService {
     return token.token;
   }
 
-  async getToken(email: string): Promise<Token | null> {
+  public async getToken(email: string): Promise<Token | null> {
     return await get("email", email);
   }
 
-  async checkToken(token: string): Promise<Token | null> {
+  public async checkToken(token: string): Promise<Token | null> {
     return await get("token", token);
   }
 

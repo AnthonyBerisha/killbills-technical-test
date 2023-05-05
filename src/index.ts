@@ -1,11 +1,13 @@
 import express, { type Request, type Response } from "express";
 import { justifyController } from "./justify/justify.controller";
 import { authController } from "./auth/auth.controller";
+import bodyParser from "body-parser";
 import dbInit from "./db/init";
 const dotenv = require("dotenv").config();
 const api = express();
 
 api.use(express.json());
+api.use(bodyParser.text());
 api.use("/api", justifyController);
 api.use("/api", authController);
 
