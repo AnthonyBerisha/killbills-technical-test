@@ -1,7 +1,8 @@
-import { Request, Response, Router } from "express";
+import { type Request, type Response, Router } from "express";
 import { JustifyService } from "./justify.service";
+import { authMiddleware } from "../middleware/auth.middleware";
 
-const JustifyController = Router();
+const justifyController = Router();
 
 const service = new JustifyService();
 
@@ -13,9 +14,9 @@ const service = new JustifyService();
     - Call JustifyService's methods
     - Return result
 */
-JustifyController.post('/', (req: Request, res: Response) => {
-    res.set('Content-Type', 'text/plain');
-    return res.send(service.justify());
-})
+justifyController.post("/justify", authMiddleware, (req: Request, res: Response) => {
+  res.set("Content-Type", "text/plain");
+  return res.send(service.justify());
+});
 
-export { JustifyController };
+export { justifyController };
