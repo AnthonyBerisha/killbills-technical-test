@@ -8,8 +8,6 @@ export class RateLimiterService {
       return true;
     }
 
-    console.log(text);
-
     const currentPayloadWordCount: number | undefined =
       text.match(/(\w+)/g)?.length;
     const sum: number = await sumWordCounts(token);

@@ -16,7 +16,7 @@ justifyController.post(
   "/justify",
   [authMiddleware, rateLimiterMiddleware],
   (req: Request, res: Response) => {
-    const justifiedText = service.justify();
+    const justifiedText = service.justify(req.body);
 
     res.send(justifiedText);
   }

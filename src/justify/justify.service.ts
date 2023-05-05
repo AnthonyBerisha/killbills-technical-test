@@ -1,6 +1,6 @@
 export class JustifyService {
   // TODO - Write justification methods
-  justify(): string {
-    return "Justified text";
+  justify(text: string): string {
+    return text;
   }
 }

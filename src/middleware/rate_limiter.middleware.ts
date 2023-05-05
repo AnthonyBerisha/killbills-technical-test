@@ -26,7 +26,7 @@ export async function rateLimiterMiddleware(
       throw new PaymentRequiredException();
     }
   } catch (error: any) {
-    throw new Error(error);
+    next(error);
   }
 
   next();

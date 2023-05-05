@@ -20,7 +20,7 @@ export async function authMiddleware(
       throw new UnauthorizedException();
     }
   } catch (error: any) {
-    throw new Error(error);
+    next(error);
   }
   next();
 }
