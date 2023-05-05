@@ -1,5 +1,6 @@
 import { type Request, type Response, type NextFunction } from "express";
 import { AuthService } from "../auth/auth.service";
+import { UnauthorizedException } from "../Exceptions/UnauthorizedException";
 
 const authService = new AuthService();
 
@@ -8,15 +9,19 @@ export async function authMiddleware(
   res: Response,
   next: NextFunction
 ): Promise<void> {
-  if (!req.body || !req.body.token || !req.body.token.length) {
-    res.status(401).send();
-    return;
-  }
-  const token = await authService.checkToken(req.body.token);
+  const apiToken = req.header("x-api-key");
+  try {
+    if (apiToken == null) {
+      throw new UnauthorizedException();
+    }
+    const token = await authService.checkToken(apiToken);
 
-  if (token) {
-    next();
+    if (token == null) {
+      throw new UnauthorizedException();
+    }
+  } catch (error: any) {
+    next(error);
   }
 
-  res.status(401).send();
+  next();
 }

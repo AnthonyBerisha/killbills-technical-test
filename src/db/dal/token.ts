@@ -1,9 +1,7 @@
-import { Op } from "sequelize";
-import Token, { type TokenInput, type TokenOutput } from "../models/Token";
+import Token, { type TokenInput } from "../models/Token";
 
 export const create = async (payload: TokenInput): Promise<Token> => {
   const token = await Token.create(payload);
-  console.log(payload);
   return token;
 };
 
