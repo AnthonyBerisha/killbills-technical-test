@@ -1,6 +1,6 @@
 import { type Request, type Response, type NextFunction } from "express";
 import { AuthService } from "../auth/auth.service";
-import { UnauthorizedException } from "~/Exceptions/UnauthorizedException";
+import { UnauthorizedException } from "../Exceptions/UnauthorizedException";
 
 const authService = new AuthService();
 
@@ -22,5 +22,6 @@ export async function authMiddleware(
   } catch (error: any) {
     next(error);
   }
+
   next();
 }

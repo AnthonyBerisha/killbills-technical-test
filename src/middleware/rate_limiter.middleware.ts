@@ -1,8 +1,8 @@
 import { type Request, type Response, type NextFunction } from "express";
 import { RateLimiterService } from "../rate_limiter/rate_limiter.service";
-import { PaymentRequiredException } from "~/Exceptions/PaymentRequiredException";
-import { UnauthorizedException } from "~/Exceptions/UnauthorizedException";
-import { BadRequestException } from "~/Exceptions/BadRequestException";
+import { PaymentRequiredException } from "../Exceptions/PaymentRequiredException";
+import { UnauthorizedException } from "../Exceptions/UnauthorizedException";
+import { BadRequestException } from "../Exceptions/BadRequestException";
 const rateLimiterService = new RateLimiterService();
 
 export async function rateLimiterMiddleware(
