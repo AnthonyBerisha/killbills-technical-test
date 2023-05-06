@@ -23,5 +23,6 @@ export async function authMiddleware(
     next(error);
   }
 
+  res.locals.token = apiToken;
   next();
 }

@@ -1,3 +1,4 @@
+import { countWords } from "~/utils/countWords";
 import { sumWordCounts } from "../db/dal/call";
 
 const DAILY_RATE_LIMIT = 80000;
@@ -8,8 +9,7 @@ export class RateLimiterService {
       return true;
     }
 
-    const currentPayloadWordCount: number | undefined =
-      text.match(/(\w+)/g)?.length;
+    const currentPayloadWordCount: number | undefined = countWords(text);
     const sum: number = await sumWordCounts(token);
     let total: number = sum;
 
